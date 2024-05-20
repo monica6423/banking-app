@@ -28,7 +28,7 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
           access_token: bank.accessToken,
         });
         const accountData = accountsResponse.data.accounts[0];
-
+        console.log("accountsResponse.data", accountsResponse.data)
         // get institution info from plaid
         const institution = await getInstitution({
           institutionId: accountsResponse.data.item.institution_id!,
@@ -51,6 +51,8 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
         return account;
       })
     );
+
+    console.log("accounts in action", accounts)
 
     const totalBanks = accounts.length;
 
